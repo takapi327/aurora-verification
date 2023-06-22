@@ -1,0 +1,2 @@
+
+GET /healthcheck interfaceAdapter.controllers.ApplicationController.healthCheck
