@@ -17,7 +17,10 @@ lazy val root = (project in file("."))
 libraryDependencies ++= Seq(
   guice,
   hikariCP,
-  driver
+  //driver,
+  "ch.qos.logback" % "logback-classic" % "1.2.11",
+  "org.mariadb.jdbc" % "mariadb-java-client" % "2.7.2",
+  //"software.aws.rds" % "aws-mysql-jdbc" % "1.1.7"
 )
 
 import scala.sys.process._
@@ -62,7 +65,7 @@ import com.amazonaws.regions.{ Region, Regions }
 Ecr / region           := Region.getRegion(Regions.AP_NORTHEAST_1)
 Ecr / localDockerImage := (Docker / packageName).value + ":" + (Docker / version).value
 Ecr / repositoryTags   := Seq(version.value, "latest")
-Ecr / repositoryName   := (Docker / packageName).value
+Ecr / repositoryName   := (Docker / packageName).value + "-server"
 
 /** Setting sbt-release */
 import ReleaseTransformations._
