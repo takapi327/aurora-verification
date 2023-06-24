@@ -17,10 +17,8 @@ lazy val root = (project in file("."))
 libraryDependencies ++= Seq(
   guice,
   hikariCP,
-  //driver,
-  "ch.qos.logback" % "logback-classic" % "1.2.11",
-  "org.mariadb.jdbc" % "mariadb-java-client" % "2.7.2",
-  //"software.aws.rds" % "aws-mysql-jdbc" % "1.1.7"
+  Driver.maria,
+  logbackClassic
 )
 
 import scala.sys.process._

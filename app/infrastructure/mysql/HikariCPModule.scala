@@ -34,7 +34,7 @@ private object HikariConfigBuilder {
     hikariConfig.setMaximumPoolSize(5)
     //hikariConfig.setReadOnly(true)
     //hikariConfig.setConnectionTestQuery("SELECT 1")
-    hikariConfig.setMaxLifetime(120000)
+    //hikariConfig.setMaxLifetime(120000)
     hikariConfig.addDataSourceProperty("useSSL", false)
 
     hikariConfig.validate()
