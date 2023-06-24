@@ -7,7 +7,7 @@ organization := "com.github.takapi327"
 
 ThisBuild / organizationName := "takapi327"
 
-ThisBuild / scalaVersion := "2.13.3"
+ThisBuild / scalaVersion := "2.12.11"
 
 lazy val root = (project in file("."))
   .enablePlugins(PlayScala)
@@ -18,7 +18,9 @@ libraryDependencies ++= Seq(
   guice,
   hikariCP,
   Driver.maria,
-  logbackClassic
+  logbackClassic,
+  typesafeConfig,
+  slick
 )
 
 import scala.sys.process._

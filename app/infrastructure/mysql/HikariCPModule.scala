@@ -8,6 +8,8 @@ import com.google.inject.AbstractModule
 
 import com.zaxxer.hikari.{ HikariConfig, HikariDataSource }
 
+import com.typesafe.config._
+
 import play.api.inject.ApplicationLifecycle
 
 class HikariCPModule extends AbstractModule {
@@ -18,19 +20,22 @@ class HikariCPModule extends AbstractModule {
 }
 
 private object HikariConfigBuilder {
+
+  private val config: Config = ConfigFactory.load()
+
   lazy val build: HikariConfig = {
     val hikariConfig = new HikariConfig()
 
-    hikariConfig.setUsername("takapi327")
-    //hikariConfig.setPassword("docker")
-    hikariConfig.setPassword("takapi327")
-    //hikariConfig.setJdbcUrl("jdbc:mysql://127.0.0.1:53306/test")
-    //hikariConfig.setJdbcUrl("jdbc:mysql://aurora-cluster-stg.cluster-cqfxqxno4vvs.ap-northeast-1.rds.amazonaws.com/test")
-    hikariConfig.setJdbcUrl("jdbc:mariadb://aurora-cluster-stg.cluster-cqfxqxno4vvs.ap-northeast-1.rds.amazonaws.com/test")
-    //hikariConfig.setJdbcUrl("jdbc:mysql:aws://aurora-cluster-stg.cluster-cqfxqxno4vvs.ap-northeast-1.rds.amazonaws.com/test")
-    //hikariConfig.setDriverClassName("com.mysql.jdbc.Driver")
+    val userName        = config.getString("hikari.user_name")
+    val password        = config.getString("hikari.password")
+    val jdbcUrl         = config.getString("hikari.jdbc_url")
+    val driverClassName = config.getString("hikari.driver_class_name")
+
+    hikariConfig.setUsername(userName)
+    hikariConfig.setPassword(password)
+    hikariConfig.setJdbcUrl(jdbcUrl)
+    hikariConfig.setDriverClassName(driverClassName)
     hikariConfig.setDriverClassName("org.mariadb.jdbc.Driver")
-    //hikariConfig.setDriverClassName("software.aws.rds.jdbc.mysql.Driver")
     hikariConfig.setMaximumPoolSize(5)
     //hikariConfig.setReadOnly(true)
     //hikariConfig.setConnectionTestQuery("SELECT 1")
