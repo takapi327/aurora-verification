@@ -2,3 +2,4 @@
 GET /healthcheck interfaceAdapter.controllers.ApplicationController.healthCheck
 
 GET / interfaceAdapter.controllers.DatabaseConnectionController.connection
+GET /slick interfaceAdapter.controllers.SlickConnectionController.connection

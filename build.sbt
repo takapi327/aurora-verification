@@ -17,7 +17,7 @@ lazy val root = (project in file("."))
 libraryDependencies ++= Seq(
   guice,
   hikariCP,
-  Driver.maria,
+  Driver.mysql,
   logbackClassic,
   typesafeConfig,
   slick
@@ -36,8 +36,7 @@ scalacOptions ++= Seq(
   "-language:existentials",
   "-language:higherKinds",
   "-language:implicitConversions",
-  "-Ywarn-dead-code",
-  "-Ymacro-annotations"
+  "-Ywarn-dead-code"
 )
 
 javaOptions ++= Seq(

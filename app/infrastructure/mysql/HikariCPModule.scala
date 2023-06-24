@@ -35,7 +35,6 @@ private object HikariConfigBuilder {
     hikariConfig.setPassword(password)
     hikariConfig.setJdbcUrl(jdbcUrl)
     hikariConfig.setDriverClassName(driverClassName)
-    hikariConfig.setDriverClassName("org.mariadb.jdbc.Driver")
     hikariConfig.setMaximumPoolSize(5)
     //hikariConfig.setReadOnly(true)
     //hikariConfig.setConnectionTestQuery("SELECT 1")
