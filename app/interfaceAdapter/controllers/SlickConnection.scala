@@ -35,7 +35,6 @@ class SlickConnectionController @Inject()(implicit
       id <- database.run(userTable returning userTable.map(_.id) += User(None, Random.alphanumeric.take(10).mkString))
       result <- database.run(userTable.filter(_.id === id).result)
     } yield {
-      database.close()
       Ok(result.map(v => s"ID: ${ v.id }, Name: ${ v.name }").mkString("\n"))
     }
   }
