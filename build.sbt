@@ -17,7 +17,7 @@ lazy val root = (project in file("."))
 libraryDependencies ++= Seq(
   guice,
   hikariCP,
-  Driver.mysql,
+  Driver.maria,
   logbackClassic,
   typesafeConfig,
   slick

@@ -37,7 +37,8 @@ private object HikariConfigBuilder {
     hikariConfig.setDriverClassName(driverClassName)
     hikariConfig.setMaximumPoolSize(5)
     //hikariConfig.setReadOnly(true)
-    //hikariConfig.setConnectionTestQuery("SELECT 1")
+    //hikariConfig.setConnectionInitSql("SELECT test.validation()")
+    //hikariConfig.setConnectionInitSql("SELECT 1")
     //hikariConfig.setMaxLifetime(120000)
     hikariConfig.addDataSourceProperty("useSSL", false)
 

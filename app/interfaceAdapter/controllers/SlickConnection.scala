@@ -1,5 +1,6 @@
 package interfaceAdapter.controllers
 
+import java.security.Security
 import javax.inject.Inject
 
 import scala.util.Random
@@ -31,6 +32,11 @@ class SlickConnectionController @Inject()(implicit
   private val userTable = TableQuery[UserTable]
 
   def connection = Action async {
+
+    println("=================")
+    println(Security.getProperty("networkaddress.cache.ttl"))
+    println("=================")
+
     for {
       id <- database.run(userTable returning userTable.map(_.id) += User(None, Random.alphanumeric.take(10).mkString))
       result <- database.run(userTable.filter(_.id === id).result)
